@@ -1,4 +1,4 @@
-#exercice 3 
+#exercice 2
 class Membre:
 
     def __init__(self, numero, nom, succursale, duree, prix, actif):
@@ -92,14 +92,13 @@ class Membrepremium(Membre):
 
 
 #exercice 6
-
 def sauvegarder_membres(membres):
 
     fichier = open("membres.txt", "w")
 
     for membre in membres:
 
-        if isinstance(membre, MembreStandard):
+        if isinstance(membre,MembreStandart ):
 
             ligne = (
                 "STANDARD;"
@@ -112,7 +111,7 @@ def sauvegarder_membres(membres):
                 + membre.casier + "\n"
             )
 
-        elif isinstance(membre, MembrePremium):
+        elif isinstance(membre, Membrepremium):
 
             ligne = (
                 "PREMIUM;"
@@ -133,8 +132,63 @@ def sauvegarder_membres(membres):
 
 
 
+#exercice7
+def charger_membres():
 
-    #
+    membres = []
+
+    fichier = open("membres.txt", "r")
+
+    for ligne in fichier:
+
+        ligne = ligne.strip()
+
+        informations = ligne.split(";")
+
+        type_membre = informations[0]
+
+        if type_membre == "STANDARD":
+
+            membre = MembreStandart(
+                int(informations[1]),
+                informations[2],
+                informations[3],
+                int(informations[4]),
+                float(informations[5]),
+                informations[6],
+                informations[7]
+            )
+
+        elif type_membre == "PREMIUM":
+
+            membre = Membrepremium(
+                int(informations[1]),
+                informations[2],
+                informations[3],
+                int(informations[4]),
+                float(informations[5]),
+                informations[6],
+                informations[7]
+            )
+
+        membres.append(membre)
+
+    fichier.close()
+
+    return membres
+
+
+
+#exercice 8
+def afficher_membres_actifs(membres):
+
+    print("=== Membres actifs ===")
+
+    for membre in membres:
+
+        if membre.actif.lower() == "oui":
+            membre.afficher()
+
 
 
 
