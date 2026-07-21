@@ -75,17 +75,17 @@ M2.afficher()
 """Partie 3 — Héritage"""
 class MembreStandart(Membre):
     def __init__(self,casier,numero,nom,succursale,duree,prix_mens,actif):
-        super.__init__(self,numero,nom,succursale,duree,prix_mens,actif)
+        super().__init__(numero,nom,succursale,duree,prix_mens,actif)
         self.casier=casier
-        def afficher():
-            super._afficher()
+    def afficher(self):
+        super().afficher()
         print(f"casier:{self.casier}")
 class Membrepremium(Membre):
     def __init__(self,coach_perso,numero,nom,succursale,duree,prix_mens,actif):
-        super.__init__(self,numero,nom,succursale,duree,prix_mens,actif)
+        super().__init__(numero,nom,succursale,duree,prix_mens,actif)
         self.coach_perso=coach_perso
-        def afficher():
-            super._afficher()
+    def afficher(self):
+        super().afficher()
         print(f"casier:{self.coach_perso}")
 Membre1 = MembreStandart('OUI', 1, "ruth", "Montreal", 12, 50, 'OUI')
 Membre2 = MembreStandart('NON', 2, "jean", "Toronto", 6, 40, 'OUI')
@@ -95,3 +95,11 @@ Membre4 = Membrepremium('NON', 4, "idris", "Toronto", 6, 90, 'NON')
 Membres=[Membre1,Membre2,Membre3,Membre4]
 for i in Membres:
      print(i.afficher())
+def sauvegarder_membres(membres):
+
+    with open("membres.txt", "w", encoding='utf-8') as f:
+        for Membre in Membres:
+            pass
+
+"""Partie 11 — Dictionnaires"""
+
