@@ -99,7 +99,15 @@ def sauvegarder_membres(membres):
 
     with open("membres.txt", "w", encoding='utf-8') as f:
         for Membre in Membres:
-            pass
+            if hasattr(Membre,'casier'):
+                f.write(f"Standart, {Membre.numero}, {Membre.nom},{Membre.succursale},{Membre.duree},{Membre.prix_mens},{Membre.actif}\n")
+            elif hasattr(Membre,'coach_perso'):
+                f.write(f"Standart, {Membre.numero}, {Membre.nom},{Membre.succursale},{Membre.duree},{Membre.prix_mens},{Membre.actif}\n")
+                f.write(Membre)
+                f.close()
+                print("Les membres ont été sauvegardés.")
+
+
 
 """Partie 11 — Dictionnaires"""
 
