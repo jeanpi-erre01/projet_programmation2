@@ -1,0 +1,4 @@
+Standart, 1, ruth,Montreal,12,50,Oui
+Standart, 2, jean,Toronto,6,40,Oui
+Premium, 3, ahou,Montreal,12,100,Oui
+Premium, 4, idris,Toronto,6,90,Non

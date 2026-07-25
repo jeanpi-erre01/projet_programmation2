@@ -67,7 +67,7 @@ class  Membre :
             print("Valeur invalide.")
 
     def afficher(self):
-            print(f" le numero {self.numero} avec le nom {self.nom} est inscrit a la succursale {self.succursale} pour {self.duree}, au prix de {self.prix_mens} $ par mois,actif:{self.actif}")
+            print(f" le numero {self.numero} avec le nom {self.nom} est inscrit a la succursale {self.succursale} pour {self.duree} mois, au prix de {self.prix_mens} $ par mois,actif:{self.actif}")
 M1=Membre(1,'mai','dakar',5,1000,'oui' )
 M2=Membre(2,'awa','scotia',6,2000,'non')
 M1.afficher()
@@ -95,17 +95,16 @@ Membre4 = Membrepremium('NON', 4, "idris", "Toronto", 6, 90, 'NON')
 Membres=[Membre1,Membre2,Membre3,Membre4]
 for i in Membres:
      print(i.afficher())
-def sauvegarder_membres(membres):
-
+def sauvegarder_membres(Membres):
     with open("membres.txt", "w", encoding='utf-8') as f:
         for Membre in Membres:
             if hasattr(Membre,'casier'):
                 f.write(f"Standart, {Membre.numero}, {Membre.nom},{Membre.succursale},{Membre.duree},{Membre.prix_mens},{Membre.actif}\n")
             elif hasattr(Membre,'coach_perso'):
-                f.write(f"Standart, {Membre.numero}, {Membre.nom},{Membre.succursale},{Membre.duree},{Membre.prix_mens},{Membre.actif}\n")
-                f.write(Membre)
-                f.close()
-                print("Les membres ont été sauvegardés.")
+                f.write(f"Premium, {Membre.numero}, {Membre.nom},{Membre.succursale},{Membre.duree},{Membre.prix_mens},{Membre.actif}\n")
+        print("Les membres ont été sauvegardés.")
+        f.close()
+sauvegarder_membres([Membre1,Membre2,Membre3,Membre4] )
 
 
 
