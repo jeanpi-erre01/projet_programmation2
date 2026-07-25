@@ -103,8 +103,29 @@ def sauvegarder_membres(Membres):
             elif hasattr(Membre,'coach_perso'):
                 f.write(f"Premium, {Membre.numero}, {Membre.nom},{Membre.succursale},{Membre.duree},{Membre.prix_mens},{Membre.actif}\n")
         print("Les membres ont été sauvegardés.")
-        f.close()
+    print(f.closed)
 sauvegarder_membres([Membre1,Membre2,Membre3,Membre4] )
+def charger_membres():
+    L1=[]
+    L2=[]
+    L=[]
+    with open ('membres.txt', 'r', encoding='utf-8') as f:
+        for ligne in f:
+            print(ligne.strip())
+            if 'standart' in ligne:
+                informations = ligne.strip()
+                contenu1=MembreStandart(int(informations[1]),informations[2],informations[3],int(informations[4]),float(informations[5]),informations[6],informations[7])
+                L1.append(contenu1)
+            else:
+                informations = ligne.strip()
+                contenu2=Membrepremium(int(informations[1]),informations[2],informations[3],int(informations[4]),float(informations[5]),informations[6],informations[7])
+                L2.append(contenu2)
+        L=L1+L2
+        for i in L:
+            print(i.afficher())
+        return L
+    print(f.closed)
+charger_membres()
 
 
 
